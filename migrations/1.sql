@@ -1,0 +1,21 @@
+
+CREATE TABLE cities (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL UNIQUE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE routes (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  from_city_id INTEGER NOT NULL,
+  to_city_id INTEGER NOT NULL,
+  distance INTEGER NOT NULL,
+  mode TEXT NOT NULL,
+  time_minutes REAL NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_routes_from_city ON routes(from_city_id);
+CREATE INDEX idx_routes_to_city ON routes(to_city_id);
